@@ -1,4 +1,3 @@
-mod log;
 mod units;
 mod trigger;
 mod counter;
