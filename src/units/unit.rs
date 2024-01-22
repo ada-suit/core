@@ -1,6 +1,11 @@
 use gpiod::Chip;
 
-pub trait Component {
+pub trait Input {
+    fn init(chip: &Chip) -> Self;
+    fn update(&mut self, counter: &u32);
+}
+
+pub trait Output {
     fn init(chip: &Chip) -> Self;
     fn update(&mut self, counter: &u32);
 }

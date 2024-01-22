@@ -1,6 +1,6 @@
 use gpiod;
 use super::unit;
-use crate::config::details::{BUZZER:PINS, BUZZER_COUNT};
+use crate::config::details::{BUZZER_PINS, BUZZER_COUNT};
 
 const PIN_COUNT: usize = 1;
 
@@ -10,7 +10,7 @@ pub struct Buzzer {
 }
 
     // Initialize and return a vector of buzzers
-impl unit::Component for Buzzer {
+impl unit::Output for Buzzer {
     fn init(chip: &gpiod::Chip) -> Buzzer {
         let pins: [u32; PIN_COUNT] = [
             13  // one pin

@@ -5,7 +5,7 @@ mod config;
 
 use gpiod::Chip;
 use config::details::CHIP;
-use units::{unit::Component, Led, Button, Buzzer};
+use units::{unit::Input, unit::Output, Led, Button, Buzzer};
 
 fn main() {
     let mut counter: u32  = 1;

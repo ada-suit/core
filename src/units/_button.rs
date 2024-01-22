@@ -10,7 +10,7 @@ pub struct Button {
     pub call: u16,
 }
 
-impl unit::Component for Button {
+impl unit::Input for Button {
     // Initialize and return a vector of buttons
     fn init(chip: &gpiod::Chip) -> Button {
         let pins: [u32; PIN_COUNT] = [

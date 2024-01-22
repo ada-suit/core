@@ -11,7 +11,7 @@ pub struct Led {
     blink: [unit::Pulse; PIN_COUNT],
 }
 
-impl unit::Component for Led {
+impl unit::Output for Led {
     // Initialize and return a vector of LEDs
     fn init(chip: &gpiod::Chip) -> Led {
         let pins: [u32; PIN_COUNT] = [
