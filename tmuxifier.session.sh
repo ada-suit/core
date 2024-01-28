@@ -2,7 +2,7 @@ session_root "~/Projects/ada"
 
 if initialize_session "ada"; then
     new_window "code"
-    run_cmd "nvim src/main.rs"
+    run_cmd "nvim -O2 src/main.rs src/trigger.rs"
 
     new_window "shell"
     split_h
