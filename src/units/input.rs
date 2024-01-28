@@ -1,9 +1,9 @@
 // src/units/input.rs
 
 use gpiod;
-use super::pulse::{Pulse, pace_value};
+// use crate::counter;
 
-pub struct Structure<const COUNT: usize> {
+pub struct Input<const COUNT: usize> {
     line:  gpiod::Lines<gpiod::Input>,
     sleep: [u32;COUNT],
     pub call: u16,

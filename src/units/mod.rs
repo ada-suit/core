@@ -3,10 +3,10 @@
 pub mod pulse;
 
 pub mod output;
-pub use output::OutputDefaults;
+pub use output::OutBase;
 
 pub mod input;
-pub use input::InputDefaults;
+pub use input::InBase;
 
 pub mod _led;
 pub use _led::Led;
