@@ -1,12 +1,21 @@
 // units/_buzzer.rs
 
-pub use super::output::{Structure, Interface};
+use super::output::*;
 use crate::config::details::{BUZZER_PINS, BUZZER_COUNT};
+use super::pulse::Pace;
 
-pub type Buzzer = Structure<BUZZER_COUNT>;
+pub type Buzzer = Output<BUZZER_COUNT>;
 
-impl Interface<BUZZER_COUNT> for Buzzer {
+impl OutBase<BUZZER_COUNT> for Buzzer {
     const PINS: [u32; BUZZER_COUNT] = BUZZER_PINS;
     const ID: &'static str = "Buzzers";
+    
+    fn update(&mut self, counter: &u32) {
+        std_update(self, counter);
+    }
+
+    fn blink(&mut self, id: usize, duration: u8, pace: Pace) {
+        std_blink(self, id, duration, pace);
+    }
 }
 
