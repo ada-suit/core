@@ -1,0 +1,9 @@
+Core
+============
+
+The core repository contains the core logic and functionality of the ada 
+project. It serves as the backbone for hardware interaction and system
+programming. Written in Rust, this repository provides an interface for other
+modules to interact with, facilitating the development of additional
+functionalities.
+
