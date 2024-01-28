@@ -11,7 +11,7 @@ pub struct Structure<const COUNT: usize> {
 }
 
 pub trait Interface<const COUNT: usize> {
-    const PINS: [u8; COUNT];
+    const PINS: [u32; COUNT];
     const ID: &'static str;
 
     fn init(chip: &gpiod::Chip) -> Structure<COUNT>;
