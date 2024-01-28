@@ -5,7 +5,7 @@ mod config;
 
 use gpiod::Chip;
 use config::details::CHIP;
-use units::{unit::Input, unit::Output, Led, Button, Buzzer};
+use units::{Led, Button, Buzzer, InputDefaults, OutputDefaults};
 
 fn main() {
     let mut counter: u32  = 1;
@@ -16,9 +16,10 @@ fn main() {
     let chip = Chip::new(CHIP)
         .expect("Failed to open GPIO chip");
     
-    let mut leds = Led::init(&chip);
+    let mut leds    = Led::init(&chip);
     let mut buttons = Button::init(&chip);
     let mut buzzers = Buzzer::init(&chip);
+    
     
     while run {
         // update

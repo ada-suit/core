@@ -1,8 +1,12 @@
 // units/mod.rs
 
-pub mod output;
-pub mod input;
 pub mod pulse;
+
+pub mod output;
+pub use output::OutputDefaults;
+
+pub mod input;
+pub use input::InputDefaults;
 
 pub mod _led;
 pub use _led::Led;
