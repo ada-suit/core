@@ -11,7 +11,7 @@ use crate::counter;
 pub struct Input<const COUNT: usize> {
     line:  gpiod::Lines<gpiod::Input>,
     sleep: [u32;COUNT],
-    pub call: u16,
+    pub call: u8,
 }
 
 // trait defining functions essential for all input components.
