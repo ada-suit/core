@@ -1,4 +1,4 @@
-// units/_buzzer.rs
+/* units/_buzzer.rs */
 
 use super::output::*;
 use crate::config::details::{BUZZER_PINS, BUZZER_COUNT};

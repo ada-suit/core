@@ -1,4 +1,4 @@
-// units/mod.rs
+/* units/mod.rs */
 
 pub mod pulse;
 

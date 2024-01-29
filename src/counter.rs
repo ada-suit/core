@@ -1,4 +1,8 @@
-/* counter.rs */
+/* counter.rs 
+ * 
+ * to define counter's functionality. ensures it loops within allowed range,
+ * and no process makes it jump out of that range.
+ * */
 
 // increment counter 
 // either increment its value by 1 or reset it back to 1

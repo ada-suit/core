@@ -1,4 +1,7 @@
-/* trigger.rs */
+/* trigger.rs 
+ * 
+ * defines actions to be triggered; either automatically or through user call.
+ * */
 
 use crate::units;
 use units::{Led, Button, Buzzer};

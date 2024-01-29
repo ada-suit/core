@@ -1,5 +1,10 @@
-// pulse.rs
+/* units/pulse.rs 
+ *
+ * defines beep/blink functionality for output components, with also specifying
+ * a few speed options, from `Still` (i.e. no blink), to very `Rapid` blink.
+ * */
 
+// defines different paces/speeds for pulse/blink 
 #[derive(Debug, Copy, Clone)]
 pub enum Pace {
     Rapid,
@@ -10,6 +15,7 @@ pub enum Pace {
     Still,
 }
 
+// assigns numerical values to different paces 
 pub fn pace_value(pace: Pace) -> u32 {
     match pace {
         Pace::Rapid    => 500,
@@ -21,9 +27,10 @@ pub fn pace_value(pace: Pace) -> u32 {
     }
 }
 
+// basic pulse structure, storing essential info
 #[derive(Debug, Copy, Clone)]
 pub struct Pulse {
-    pub pace: u32,
-    pub count: u8,
+    pub pace: u32, // speed 
+    pub count: u8, // number of times to pulse 
 }
 

@@ -1,4 +1,4 @@
-// units/_buttons.rs
+/* units/_buttons.rs */
 
 use super::input::*;
 use crate::config::details::{BUTTON_PINS, BUTTON_COUNT};

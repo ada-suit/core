@@ -1,4 +1,4 @@
-// units/_led.rs
+/* units/_led.rs */
 
 use super::output::*;
 use crate::config::details::{LED_PINS, LED_COUNT};

@@ -1,3 +1,17 @@
+/* config.rs 
+ *
+ * only file to modify.
+ *
+ * should there be a need to modify pin numbers, unit purpose, chip name, or 
+ * even to add/remove new units, modifying this file would be suffecient for 
+ * these scenarious.
+ *
+ * however, ofcourse, adding new more hardware would also require adding 
+ * commands for dealing with it elsewhere in the project.
+ *
+ * */
+
+// defines all components with their pins 
 pub mod details {
 
     // Chip
