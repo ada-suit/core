@@ -3,15 +3,15 @@
  * defines actions to be triggered; either automatically or through user call.
  * */
 
+use super::system;
 use crate::units::{Led, Button, Buzzer, OutBase, InBase}; 
 
 // background processes
 // cmds that are triggered every cycle; required by the program
 pub fn auto(counter: &u32, leds: &mut Led, _buzzers: &mut Buzzer) {
     if 1 == *counter {
-        // change led status
+        leds.set("POWER", system::power_stability());
     }
-    unimplemented!();
 }
 
 // user requested actions

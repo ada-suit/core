@@ -17,3 +17,7 @@ fn run_cmd(cmd: &str, args: &[&str]) -> String {
     return String::from_utf8_lossy(&output.stdout).to_string();
 }
 
+pub fn power_stability() -> bool {
+    return "throttled=0x0" == run_cmd("vcgencmd",  &["get_throttled"]);
+}
+
