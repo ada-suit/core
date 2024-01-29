@@ -1,3 +1,5 @@
+/* main.rs */
+
 mod units;
 mod trigger;
 mod counter;
@@ -27,7 +29,7 @@ fn main() {
         buzzers.update(&counter);
 
         // actions
-        trigger::auto(&counter, &leds, &buzzers);
+        trigger::auto(&counter, &mut leds, &mut buzzers);
         trigger::call(&mut shift, buttons.call);
 
         // counter update
