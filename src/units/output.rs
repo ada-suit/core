@@ -45,6 +45,7 @@ pub trait OutBase<const COUNT: usize> {
 
     fn update(&mut self, counter: &u32);
     fn blink(&mut self, id: usize, duration: u8, pace: Pace);
+    fn set(&mut self, id: &str, status: bool);
 }
 
 /* std_functions()
@@ -99,5 +100,16 @@ pub fn std_blink<const COUNT: usize>(
 ) {
     unit.blink[id].count = duration * 2;
     unit.blink[id].pace  = pace_value(pace);
+}
+
+// stanard set: simplest way to switch a component's state (on/off)
+pub fn std_set<const COUNT: usize>(
+    unit: &mut Output<COUNT>, 
+    id: usize, 
+    value: bool
+) {
+    let mut selection = [None; COUNT];
+    selection[id] = Some(value);
+    unit.line.set_values(selection);
 }
 

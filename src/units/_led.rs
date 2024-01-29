@@ -1,7 +1,7 @@
 /* units/_led.rs */
 
 use super::output::*;
-use crate::config::details::{LED_PINS, LED_COUNT};
+use crate::config::{details::{LED_PINS, LED_COUNT}, purpose::led_match};
 use super::pulse::Pace;
 
 pub type Led = Output<LED_COUNT>;
@@ -16,6 +16,10 @@ impl OutBase<LED_COUNT> for Led {
 
     fn blink(&mut self, id: usize, duration: u8, pace: Pace) {
         std_blink(self, id, duration, pace);
+    }
+
+    fn set(&mut self, id: &str, status: bool) {
+        std_set(self, led_match(id), status);
     }
 }
 

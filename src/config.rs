@@ -44,3 +44,34 @@ pub mod details {
     ];
 }
 
+// define purpose/id for all pins with their index in the above pin array
+pub mod purpose {
+
+    pub fn led_match(request: &str) -> usize {
+        return match request {
+            "POWER"   => 0, 
+            "NETWORK" => 1,
+            "SHIFT"   => 2,
+            _ => panic!(),
+        };
+    }
+
+    pub fn button_match(request: &str) -> usize {
+        return match request {
+            "OFF"    => 0, 
+            "VB1"    => 1,
+            "VB2"    => 2,
+            "VB3"    => 3,
+            "SHIFT"  => 4,
+            _ => panic!(),
+        };
+    }
+
+    pub fn buzzer_match(request: &str) -> usize {
+        return match request {
+            "ONE"    => 0,
+            _ => panic!(),
+        }
+    }
+}
+
