@@ -4,6 +4,7 @@ mod units;
 mod trigger;
 mod counter;
 mod config;
+mod system;
 
 use gpiod::Chip;
 use config::details::CHIP;

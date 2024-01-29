@@ -6,3 +6,14 @@
  * monitoring is true or false
  */
 
+use std::process::Command;
+
+fn run_cmd(cmd: &str, args: &[&str]) -> String {
+    let output = Command::new(cmd)
+        .args(args)
+        .output()
+        .expect("couldn't run {cmd} system command");
+
+    return String::from_utf8_lossy(&output.stdout).to_string();
+}
+
