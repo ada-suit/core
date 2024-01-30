@@ -88,7 +88,8 @@ pub fn std_update<const COUNT: usize>(
             unit.pulse[i].count -= (unit.pulse[i].count != 0) as u8;
         }
     }
-    unit.line.set_values(values);
+    unit.line.set_values(values)
+        .expect("Failed to set values");
 }
 
 // standard blink: performs basic blink for given pace 
@@ -110,6 +111,7 @@ pub fn std_set<const COUNT: usize>(
 ) {
     let mut selection = [None; COUNT];
     selection[id] = Some(value);
-    unit.line.set_values(selection);
+    unit.line.set_values(selection)
+        .expect("Failed to set values");
 }
 
