@@ -5,13 +5,14 @@
  * */
 
 // defines different paces/speeds for pulse/blink 
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Default)]
 pub enum Pace {
     Rapid,
     Fast,
     Moderate,
     Slow,
     Torpid,
+    #[default]
     Still,
 }
 
@@ -28,7 +29,7 @@ pub fn pace_value(pace: Pace) -> u32 {
 }
 
 // basic pulse structure, storing essential info
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Default)]
 pub struct Pulse {
     pub pace: u32, // speed 
     pub count: u8, // number of times to pulse 

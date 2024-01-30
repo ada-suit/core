@@ -12,7 +12,7 @@ use super::pulse::*;
 pub struct Output<const COUNT: usize> {
     pub line:  gpiod::Lines<gpiod::Output>,
     pub sleep: [u32; COUNT],
-    pub blink: [Pulse; COUNT]
+    pub pulse: [Pulse; COUNT]
 }
 
 // trait defining functions essential for all output components.
@@ -25,7 +25,7 @@ pub trait OutBase<const COUNT: usize> {
         let sleep_status: [u32; COUNT] = [0; COUNT]; 
 
         let blink_status: [Pulse; COUNT] = [
-            Pulse { pace: 0, count: 0 }; 
+            Pulse::default();
             COUNT
         ];
 
@@ -37,14 +37,14 @@ pub trait OutBase<const COUNT: usize> {
             .expect("Failed to initialize {id}");
 
         return Output {
-            line: connection_line,
+            line:  connection_line,
             sleep: sleep_status,
-            blink: blink_status
+            pulse: blink_status
         };
     }
 
     fn update(&mut self, counter: &u32);
-    fn blink(&mut self, id: usize, duration: u8, pace: Pace);
+    fn blink(&mut self, id: &str, duration: u8, pace: Pace);
     fn set(&mut self, id: &str, status: bool);
 }
 
@@ -76,16 +76,16 @@ pub fn std_update<const COUNT: usize>(
 
             // reset the sleep counter 
             unit.sleep[i] = {
-                let next_val = counter::next(counter, &unit.blink[i].pace);
-                let to_reset = (unit.blink[i].count != 0) as u32;
+                let next_val = counter::next(counter, &unit.pulse[i].pace);
+                let to_reset = (unit.pulse[i].count != 0) as u32;
                 next_val * to_reset 
             };
 
-            // value = False when even blink, else True
-            values[i] = Some(unit.blink[i].count % 2 == 1);
+            // value = False when 'even numbered' blink, else True
+            values[i] = Some(unit.pulse[i].count % 2 == 1);
 
             // update blink counter
-            unit.blink[i].count -= (unit.blink[i].count != 0) as u8;
+            unit.pulse[i].count -= (unit.pulse[i].count != 0) as u8;
         }
     }
     unit.line.set_values(values);
@@ -98,8 +98,8 @@ pub fn std_blink<const COUNT: usize>(
     duration: u8, 
     pace: Pace
 ) {
-    unit.blink[id].count = duration * 2;
-    unit.blink[id].pace  = pace_value(pace);
+    unit.pulse[id].count = duration * 2;
+    unit.pulse[id].pace  = pace_value(pace);
 }
 
 // stanard set: simplest way to switch a component's state (on/off)

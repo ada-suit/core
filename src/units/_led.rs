@@ -14,8 +14,8 @@ impl OutBase<LED_COUNT> for Led {
         std_update(self, counter);
     }
 
-    fn blink(&mut self, id: usize, duration: u8, pace: Pace) {
-        std_blink(self, id, duration, pace);
+    fn blink(&mut self, id: &str, duration: u8, pace: Pace) {
+        std_blink(self, led_match(id), duration, pace);
     }
 
     fn set(&mut self, id: &str, status: bool) {
