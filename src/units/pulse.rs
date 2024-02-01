@@ -5,27 +5,16 @@
  * */
 
 // defines different paces/speeds for pulse/blink 
+#[allow(dead_code)]
 #[derive(Debug, Copy, Clone, Default)]
 pub enum Pace {
-    Rapid,
-    Fast,
-    Moderate,
-    Slow,
-    Torpid,
+    Rapid    = 500,
+    Fast     = 1000,
+    Moderate = 2500,
+    Slow     = 5000,
+    Torpid   = 50000,
     #[default]
-    Still,
-}
-
-// assigns numerical values to different paces 
-pub fn pace_value(pace: Pace) -> u32 {
-    match pace {
-        Pace::Rapid    => 500,
-        Pace::Fast     => 1000,
-        Pace::Moderate => 2500,
-        Pace::Slow     => 5000,
-        Pace::Torpid   => 50000,
-        Pace::Still    => 0,
-    }
+    Still    = 0,
 }
 
 // basic pulse structure, storing essential info

@@ -24,10 +24,7 @@ pub trait OutBase<const COUNT: usize> {
     fn init(chip: &gpiod::Chip) -> Output<COUNT> {
         let sleep_status: [u32; COUNT] = [0; COUNT]; 
 
-        let blink_status: [Pulse; COUNT] = [
-            Pulse::default();
-            COUNT
-        ];
+        let blink_status: [Pulse; COUNT] = [Pulse::default(); COUNT];
 
         let options = gpiod::Options::output(Self::PINS)
             .consumer(Self::ID);
@@ -100,7 +97,7 @@ pub fn std_blink<const COUNT: usize>(
     pace: Pace
 ) {
     unit.pulse[id].count = duration * 2;
-    unit.pulse[id].pace  = pace_value(pace);
+    unit.pulse[id].pace  = pace as u32;
 }
 
 // stanard set: simplest way to switch a component's state (on/off)
